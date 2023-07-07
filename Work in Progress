@@ -1,0 +1,18 @@
+$nomention
+$httpAddHeader[Content-Type;application/json]
+$httpAddHeader[Authorization;Bearer $getVar[APIKey]]
+$httpPost[https://api.openai.com/v1/completions;%7B
+  "model": "text-davinci-003",
+  "prompt": "$message",
+  "max_tokens": 300,
+  "temperature": 0.5,
+  "top_p": 1,
+  "n": 1,
+  "stream": false,
+  "logprobs": null
+}]
+$textSplit[$httpResult;,]
+
+$title[**Empty**]
+$description[$replaceText[$replaceText[$replaceText[$replaceText[$splitText[5];"choices;;1];":[{"text":";;1];\n\n;;1];\n;
+;-1]]
